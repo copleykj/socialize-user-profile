@@ -15,5 +15,5 @@ Package.onUse(function(api) {
     api.addFiles(["common/profile-model.js", "common/user-extensions.js"]);
     api.addFiles(["server/server.js", "server/publications.js"], "server");
 
-    api.export("UserProfile");
+    api.export("Profile");
 });
