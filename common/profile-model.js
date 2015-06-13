@@ -24,12 +24,15 @@ Profile.appendSchema({
     "username":{
         type:String,
         autoValue:function () {
-            if(this.isInsert){
+            if(!this.isFromTrustedCode){
                 return Meteor.user().username;
+            }else{
+                return this.field("username");
             }
         },
         index:1,
         unique:true,
+        optional:true,
         denyUpdate:true
     },
     "createdAt":{
