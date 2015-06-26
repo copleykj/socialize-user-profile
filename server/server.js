@@ -8,5 +8,13 @@ Profile.collection.allow({
 });
 
 Meteor.users.after.insert(function(userId, document) {
-    ProfilesCollection.insert({userId:document._id});
+    var profile = {
+        userId:document._id
+    };
+
+    if(document.username){
+        profile.username = document.username;
+    }
+
+    ProfilesCollection.insert(profile);
 });
