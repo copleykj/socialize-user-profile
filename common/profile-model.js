@@ -31,10 +31,11 @@ Profile.appendSchema({
     "createdAt":{
         type:Date,
         autoValue:function() {
-            if(this.isInsert){
+            if(this.isInsert || !this.isFromTrustedCode){
                 return new Date();
             }
-        }
+        },
+        denyUpdate:true
     },
     "lastUpdate":{
         type:Date,
