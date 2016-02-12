@@ -7,6 +7,12 @@ Profile = BaseModel.extendAndSetupCollection("profiles");
 
 ProfilesCollection = Profile.collection;
 
+Profile.methods({
+    user: function() {
+        return Meteor.users.findOne(this.userId);
+    }
+});
+
 //attach or append
 Profile.appendSchema({
     "userId":{
