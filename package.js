@@ -13,7 +13,7 @@ Package.onUse(function(api) {
     ]);
 
     api.addFiles(["common/profile-model.js", "common/user-extensions.js"]);
-    api.addFiles(["server/server.js", "server/publications.js"], "server");
+    api.addFiles(["server/server.js"], "server");
 
     api.export("Profile");
 });
