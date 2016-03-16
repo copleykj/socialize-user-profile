@@ -9,7 +9,7 @@ Package.onUse(function(api) {
     api.versionsFrom("1.0.2.1");
 
     api.use([
-        "socialize:user-model@0.1.6"
+        "socialize:user-model@0.1.7"
     ]);
 
     api.addFiles(["common/profile-model.js", "common/user-extensions.js"]);
