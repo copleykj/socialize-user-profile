@@ -37,7 +37,7 @@ Profile.appendSchema({
     "createdAt":{
         type:Date,
         autoValue:function() {
-            if(this.isInsert || !this.isFromTrustedCode){
+            if(this.isInsert){
                 return new Date();
             }
         },
