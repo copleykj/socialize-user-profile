@@ -1,3 +1,3 @@
-User.prototype.profile = function() {
-    return ProfilesCollection.findOne({userId:this._id});
+User.prototype.getProfile = function() {
+    return Meteor.profiles.findOne({userId:this._id});
 };
