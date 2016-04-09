@@ -1,7 +1,7 @@
 /**
  * Represents a Profile
  * @class Profile
- * @param {Object} document An object representing a users profile ususally a Mongo document
+ * @param {Object} document An object representing a users profile usually a Mongo document
  */
 Profile = BaseModel.extendAndSetupCollection("profiles");
 
