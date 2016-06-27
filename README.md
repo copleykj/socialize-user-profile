@@ -1,27 +1,89 @@
 # User Profile #
+This package provides the bare minimum required for a user profile and is intended to be built upon to create a custom profile class that meets your needs.
 
-This package provides the bare minimum required for a user profile and is intended to be built upon to create a custom profile class that meets your needs. Currently the fields on the schema are userId (unique), username (unique) and createdAt, and lastUpdated.
+## Basic Usage ##
+The `Profile` class provides your starting point. From there you may want to use the `methods` function inherited from `BaseModel` to add methods to the class. You could also extend the class instead and provide the methods as part of the new class. This would just require calling `NewClassName.updateTransformFunction();` so that `find` and `findOne` calls would return instances of the new class.
 
-## Profile Class - Extends BaseModel ##
-
-### Extending the Class ###
-
-You can extend the profile class by adding necessary methods to it's prototype. They will then be available on instantiated objects such as when using Meteor.profiles.findOne() and when iterating over a cursor returned from Meteor.profiles.find()
-
+### Extending using methods() ###
 ```javascript
-    Profile.prototype.fullName = function() {
-        return this.firstName + " " + this.lastName;
+import { Profile } from 'meteor/socialize:user-profile';
+
+Profile.methods({
+    fullName() {
+        return `${this.firstName} ${this.lastName}`;
     }
+});
+
+var userProfile = Meteor.profiles.findOne();
+
+userProfile.fullName(); //=> "John Doe"
 ```
+
+### Extending Profile class ###
 ```javascript
-    var userProfile = Meteor.profiles.findOne();
+import { Profile } from 'meteor/socialize:user-profile';
 
-    console.log(userProfile.fullName()) //=> "John Doe"
+export class EnhancedProfile extends Profile{
+    constructor(document){
+        //must call super, passing in the document that gets passed to the constructor
+        super(document);
+    }
+
+    fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+
+var userProfile = Meteor.profiles.findOne();
+
+userProfile.fullName(); //=> "John Doe"
 ```
 
-### Extending the Schema ###
+### Extending The Schema ###
+Currently the schema for `Profile` has the following definition.
 
-To extend the schema you can use the appendSchema method provided by the BaseModel Class. The Schema uses aldeed:simple-schmea so you should pass a compatible schema definition to appendSchema.
+```javascript
+{
+    "userId":{
+        type:String,
+        regEx:SimpleSchema.RegEx.Id,
+        autoValue:function () {
+            if(!this.value && this.isInsert){
+                return this.userId;
+            }
+        },
+        index:1,
+        unique:true,
+        denyUpdate:true
+    },
+    "username":{
+        type:String,
+        index:1,
+        unique:true,
+        optional:true,
+        denyUpdate:true
+    },
+    "createdAt":{
+        type:Date,
+        autoValue:function() {
+            if(this.isInsert){
+                return new Date();
+            }
+        },
+        denyUpdate:true
+    },
+    "lastUpdate":{
+        type:Date,
+        autoValue:function() {
+            return new Date();
+        }
+    }
+}
+```
+
+As part of the above examples, in the `fullName` method we return a string containing the `firstName` and `lastName` properties of the document. For these to be allowed as part of the profile document, you will need to add them to the schema for `Profile`. This is made simple by the `appendSchema` inherited from `BaseModel`.
+
+The schema is handled by `SimpleSchema` so just pass a compatible schema definition to the `appendSchema` method.
 
 ```javascript
     Profile.appendSchema({
@@ -38,6 +100,13 @@ To extend the schema you can use the appendSchema method provided by the BaseMod
 
 ### User Extensions ###
 
-This package extends the socialize:user-model packge with useful methods pertaining to the user profile.
+This package extends the socialize:user-model package with a `profile` method which will return the profile for the found user.
 
-`User.prototype.profile()` - Returns the profile for the user. If on the client this assumes that you have published the profile data for the user.
+```javascript
+let user = Meteor.users.findOne();
+
+user.profile();
+
+
+Meteor.user().profile(); // the current users profile
+```
