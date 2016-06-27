@@ -1,4 +1,7 @@
-Profile.collection.allow({
+import { ProfilesCollection } from '../common/profile-model';
+import { Meteor } from 'meteor/meteor';
+
+ProfilesCollection.allow({
     insert: function(userId, document) {
         return document.checkOwnership();
     },

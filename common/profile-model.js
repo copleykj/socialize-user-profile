@@ -1,17 +1,23 @@
+import { Mongo } from 'meteor/mongo';
+import { LinkableModel, LinkParent } from 'meteor/socialize:linkable-model'
+
+export const ProfilesCollection = new Mongo.Collection('profiles');
+
 /**
  * Represents a Profile
  * @class Profile
  * @param {Object} document An object representing a users profile ususally a Mongo document
  */
-Profile = BaseModel.extendAndSetupCollection("profiles");
-
-ProfilesCollection = Profile.collection;
-
-Profile.methods({
-    user: function() {
+export class Profile extends LinkParent{
+    constructor(document){
+        super(document);
+    }
+    user() {
         return Meteor.users.findOne(this.userId);
     }
-});
+}
+
+Profile.attachCollection(ProfilesCollection);
 
 //attach or append
 Profile.appendSchema({
