@@ -21,9 +21,3 @@ Meteor.users.after.insert(function(userId, document) {
 
     ProfilesCollection.insert(profile);
 });
-
-Meteor.users.deny({
-    update: function() {
-        return true;
-    }
-});
