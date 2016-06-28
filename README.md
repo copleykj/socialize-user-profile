@@ -102,6 +102,7 @@ The schema is handled by `SimpleSchema` so just pass a compatible schema definit
 
 This package extends the socialize:user-model package with a `profile` method which will return the profile for the found user.
 
+
 ```javascript
 let user = Meteor.users.findOne();
 
@@ -110,3 +111,7 @@ user.profile();
 
 Meteor.user().profile(); // the current users profile
 ```
+
+>__Note__
+>
+>`user.profile()` will be undefined on the client if profile is not published from the server.
