@@ -115,3 +115,25 @@ Meteor.user().profile(); // the current users profile
 >__Note__
 >
 >`user.profile()` will be undefined on the client if profile is not published from the server.
+
+## Advanced Usage ##
+
+The `Profile` class extends the `LinkParent` class provided by _socialize:linkable-model_. This allows you to extend the `Profile` class using linkable packages such as _socialize:likeable_, _socialize:commentable_, and _socialize:postable_.
+
+For example you could create a profile that would allow other users to add posts to it.
+
+```javascript
+import { PostableModel } from 'meteor/socialize:postable';
+import { Profile } from 'meteor/socialize:user-profile';
+import { LinkableModel } from 'meteor/socialize:linkable-model';
+
+export class PostableProfile extends PostableModel(Profile){
+    constructor(document){
+        super(document);
+    }
+}
+
+PostableProfile.updateTransformFunction();
+
+LinkableModel.registerParentModel(PostableProfile);
+```
