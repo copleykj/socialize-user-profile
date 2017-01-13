@@ -13,5 +13,5 @@ Package.onUse(function(api) {
     ]);
 
     api.mainModule("server/server.js", "server");
-    api.addFiles("common/common.js");
+    api.mainModule("common/common.js");
 });
