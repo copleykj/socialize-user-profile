@@ -22,9 +22,9 @@ Meteor.users.after.insert(function(userId, document) {
     ProfilesCollection.insert(profile);
 });
 
-Meteor.users.after.delete(function(userId, document) {
-   ProfilesCollection.remove({userId: userId})
-}
+Meteor.users.after.remove(function(userId, document) {
+   ProfilesCollection.remove({userId: userId});
+});
 
 Meteor.users.deny({
     update: function() {
