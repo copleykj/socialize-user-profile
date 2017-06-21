@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo';
-import { LinkableModel, LinkParent } from 'meteor/socialize:linkable-model'
+import { LinkableModel, LinkParent } from 'meteor/socialize:linkable-model';
+import SimpleSchema from 'simpl-schema';
 
 export const ProfilesCollection = new Mongo.Collection('profiles');
 
@@ -56,3 +57,5 @@ Profile.appendSchema({
         }
     }
 });
+
+LinkableModel.registerParentModel(Profile);
