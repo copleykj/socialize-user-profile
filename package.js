@@ -1,3 +1,4 @@
+/* global Package */
 Package.describe({
     name: 'socialize:user-profile',
     summary: 'An extensible model for a users profile',
@@ -5,7 +6,7 @@ Package.describe({
     git: 'https://github.com/copleykj/socialize-user-profile.git',
 });
 
-Package.onUse(function (api) {
+Package.onUse(function _(api) {
     api.versionsFrom('1.3');
 
     api.use([
