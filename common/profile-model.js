@@ -5,7 +5,7 @@ import { LinkableModel, LinkParent } from 'meteor/socialize:linkable-model';
 import SimpleSchema from 'simpl-schema';
 /* eslint-disable import/no-unresolved */
 
-export const ProfilesCollection = new Mongo.Collection('profiles');
+export const ProfilesCollection = new Mongo.Collection('socialize:profiles');
 
 /**
  * Represents a Profile
