@@ -6,6 +6,12 @@ In the spirit of keeping this and all of the packages in the [Socialize](https:/
 
 [Bitcoin](https://www.coinbase.com/checkouts/4a52f56a76e565c552b6ecf118461287) / [Patreon](https://www.patreon.com/user?u=4866588) / [Paypal](https://www.paypal.me/copleykj)
 
+## Installation ##
+
+```shell
+meteor add socialize:server-time
+```
+
 ## Basic Usage ##
 The `Profile` class provides your starting point. From there you may want to use the `methods` function inherited from `BaseModel` to add methods to the class. You could also extend the class instead and provide the methods as part of the new class. This would just require calling `NewClassName.updateTransformFunction();` so that `find` and `findOne` calls would return instances of the new class.
 
