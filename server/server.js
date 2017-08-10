@@ -1,33 +1,36 @@
-import { ProfilesCollection } from '../common/profile-model';
+/* eslint-disable import/no-unresolved */
 import { Meteor } from 'meteor/meteor';
+/* eslint-enable import/no-unresolved */
+
+import { ProfilesCollection } from '../common/profile-model';
 
 ProfilesCollection.allow({
-    insert: function(userId, document) {
+    insert(userId, document) {
         return document.checkOwnership();
     },
-    update: function(userId, document) {
+    update(userId, document) {
         return document.checkOwnership();
-    }
+    },
 });
 
-Meteor.users.after.insert(function(userId, document) {
-    var profile = {
-        userId:document._id
+Meteor.users.after.insert(function afterInsertUser(userId, document) {
+    const profile = {
+        userId: document._id,
     };
 
-    if(document.username){
+    if (document.username) {
         profile.username = document.username;
     }
 
     ProfilesCollection.insert(profile);
 });
 
-Meteor.users.after.remove(function(userId, document) {
-   ProfilesCollection.remove({userId: userId});
+Meteor.users.after.remove(function afterRemoveUser(userId) {
+    ProfilesCollection.remove({ userId });
 });
 
 Meteor.users.deny({
-    update: function() {
+    update() {
         return true;
-    }
+    },
 });
