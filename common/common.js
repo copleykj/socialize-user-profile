@@ -1,3 +1,3 @@
 import './user-extensions';
 
-export { Profile } from './profile-model';
+export { Profile, ProfilesCollection } from './profile-model';
