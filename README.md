@@ -9,7 +9,7 @@ In the spirit of keeping this and all of the packages in the [Socialize](https:/
 ## Installation ##
 
 ```shell
-meteor add socialize:server-time
+meteor add socialize:user-profile
 ```
 
 ## Basic Usage ##
