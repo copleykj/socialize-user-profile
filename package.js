@@ -11,6 +11,7 @@ Package.onUse(function _(api) {
 
     api.use([
         'socialize:user-model@1.0.0',
+        'socialize:linkable-model@1.0.0',
     ]);
 
     api.mainModule('server/server.js', 'server');
