@@ -17,7 +17,7 @@ The `Profile` class provides your starting point. From there you may want to use
 
 ### Extending using methods() ###
 ```javascript
-import { Profile } from 'meteor/socialize:user-profile';
+import { Profile, ProfilesCollection } from 'meteor/socialize:user-profile';
 
 Profile.methods({
     fullName() {
@@ -25,14 +25,14 @@ Profile.methods({
     }
 });
 
-var userProfile = Meteor.profiles.findOne();
+var userProfile = ProfilesCollection.findOne();
 
 userProfile.fullName(); //=> "John Doe"
 ```
 
 ### Extending Profile class ###
 ```javascript
-import { Profile } from 'meteor/socialize:user-profile';
+import { Profile, ProfilesCollection } from 'meteor/socialize:user-profile';
 
 export class EnhancedProfile extends Profile{
     constructor(document){
@@ -45,7 +45,7 @@ export class EnhancedProfile extends Profile{
     }
 }
 
-var userProfile = Meteor.profiles.findOne();
+var userProfile = ProfilesCollection.findOne();
 
 userProfile.fullName(); //=> "John Doe"
 ```
