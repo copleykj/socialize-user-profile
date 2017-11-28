@@ -12,6 +12,16 @@ In the spirit of keeping this and all of the packages in the [Socialize](https:/
 meteor add socialize:user-profile
 ```
 
+## Profile Auto Creation ##
+
+This package will automatically create user profiles when a new user is created. To disable this behavior you can set `User.disableProfileCreation = true`.
+
+```javascript
+import { User } from 'meteor/socialize:user-model';
+
+User.disableProfileCreation = true;
+```
+
 ## Basic Usage ##
 The `Profile` class provides your starting point. From there you may want to use the `methods` function inherited from `BaseModel` to add methods to the class. You could also extend the class instead and provide the methods as part of the new class. This would just require calling `NewClassName.updateTransformFunction();` so that `find` and `findOne` calls would return instances of the new class.
 

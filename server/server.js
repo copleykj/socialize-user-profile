@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import { Meteor } from 'meteor/meteor';
+import { User } from 'meteor/socialize:user-model';
 /* eslint-enable import/no-unresolved */
 
 import { ProfilesCollection } from '../common/profile-model';
@@ -14,15 +15,17 @@ ProfilesCollection.allow({
 });
 
 Meteor.users.after.insert(function afterInsertUser(userId, document) {
-    const profile = {
-        userId: document._id,
-    };
+    if (!User.disableProfileCreation) {
+        const profile = {
+            _id: document._id,
+        };
 
-    if (document.username) {
-        profile.username = document.username;
+        if (document.username) {
+            profile.username = document.username;
+        }
+
+        ProfilesCollection.insert(profile);
     }
-
-    ProfilesCollection.insert(profile);
 });
 
 Meteor.users.after.remove(function afterRemoveUser(userId) {
