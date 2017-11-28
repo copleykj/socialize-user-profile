@@ -52,7 +52,7 @@ Profile.appendSchema({
         },
         denyUpdate: true,
     },
-    lastUpdate: {
+    updatedAt: {
         type: Date,
         autoValue() {
             return new Date();
