@@ -2,6 +2,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { LinkableModel, LinkParent } from 'meteor/socialize:linkable-model';
+import { ServerTime } from 'meteor/socialize:server-time';
 import SimpleSchema from 'simpl-schema';
 /* eslint-disable import/no-unresolved */
 
@@ -46,7 +47,7 @@ Profile.appendSchema({
         type: Date,
         autoValue() {
             if (this.isInsert) {
-                return new Date();
+                return ServerTime.date();
             }
             return undefined;
         },
@@ -55,7 +56,7 @@ Profile.appendSchema({
     updatedAt: {
         type: Date,
         autoValue() {
-            return new Date();
+            return ServerTime.date();
         },
     },
 });
