@@ -15,7 +15,7 @@ export const ProfilesCollection = new Mongo.Collection('socialize:profiles');
  */
 export class Profile extends LinkParent {
     user() {
-        return Meteor.users.findOne(this.userId);
+        return Meteor.users.findOne({ _id: this._id });
     }
 }
 
