@@ -7,6 +7,6 @@ import { ProfilesCollection } from './profile-model';
 
 User.methods({
     profile() {
-        return ProfilesCollection.findOne({ userId: this._id });
+        return ProfilesCollection.findOne({ _id: this._id });
     },
 });

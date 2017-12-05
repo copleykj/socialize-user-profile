@@ -21,20 +21,16 @@ export class Profile extends LinkParent {
 
 Profile.attachCollection(ProfilesCollection);
 
-// attach or append
-Profile.appendSchema({
-    userId: {
+Profile.attachSchema(new SimpleSchema({
+    _id: {
         type: String,
         regEx: SimpleSchema.RegEx.Id,
         autoValue() {
-            if (!this.value && this.isInsert) {
+            if (this.isInsert && !this.isFromTrustedCode) {
                 return this.userId;
             }
             return undefined;
         },
-        index: 1,
-        unique: true,
-        denyUpdate: true,
     },
     username: {
         type: String,
@@ -59,6 +55,6 @@ Profile.appendSchema({
             return ServerTime.date();
         },
     },
-});
+}));
 
 LinkableModel.registerParentModel(Profile);
