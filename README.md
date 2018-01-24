@@ -8,8 +8,11 @@ In the spirit of keeping this and all of the packages in the [Socialize](https:/
 
 ## Installation ##
 
+This package relies on the npm package `simpl-schema` so you will need to make sure it is installed as well.
+
 ```shell
-meteor add socialize:user-profile
+$ meteor npm install --save simpl-schema
+$ meteor add socialize:user-profile
 ```
 
 ## Profile Auto Creation ##
