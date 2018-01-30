@@ -15,6 +15,10 @@ $ meteor npm install --save simpl-schema
 $ meteor add socialize:user-profile
 ```
 
+> __Note__
+>    
+> _This package completely disables updates to the users collection from the client to remove the ability of users to arbitrarily update the profile field on the user document._
+
 ## Profile Auto Creation ##
 
 This package will automatically create user profiles when a new user is created. To disable this behavior you can set `User.disableProfileCreation = true`.
