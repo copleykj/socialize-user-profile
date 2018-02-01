@@ -52,11 +52,6 @@ userProfile.fullName(); //=> "John Doe"
 import { Profile, ProfilesCollection } from 'meteor/socialize:user-profile';
 
 export class EnhancedProfile extends Profile{
-    constructor(document){
-        //must call super, passing in the document that gets passed to the constructor
-        super(document);
-    }
-
     fullName() {
         return `${this.firstName} ${this.lastName}`;
     }
@@ -156,9 +151,7 @@ import { Profile } from 'meteor/socialize:user-profile';
 import { LinkableModel } from 'meteor/socialize:linkable-model';
 
 export class PostableProfile extends PostableModel(Profile){
-    constructor(document){
-        super(document);
-    }
+    //methods here
 }
 
 PostableProfile.updateTransformFunction();
