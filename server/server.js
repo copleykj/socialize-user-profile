@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { User } from 'meteor/socialize:user-model';
 /* eslint-enable import/no-unresolved */
 
+import './publications.js';
 import { ProfilesCollection } from '../common/profile-model';
 
 ProfilesCollection.allow({
