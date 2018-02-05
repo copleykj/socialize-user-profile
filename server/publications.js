@@ -25,7 +25,7 @@ if (Package['socialize:friendships']) {
 }
 
 
-publishComposite('socialize.userProfile', function publishBlockedUsers(username) {
+publishComposite('socialize.userProfile', function publishUserProfile(username) {
     check(username, String);
     if (this.userId) {
         const currentUser = User.createEmpty(this.userId);
