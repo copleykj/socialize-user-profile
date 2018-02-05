@@ -67,49 +67,52 @@ Currently the schema for `Profile` has the following definition.
 
 ```javascript
 {
-    "userId":{
-        type:String,
-        regEx:SimpleSchema.RegEx.Id,
-        autoValue:function () {
-            if(!this.value && this.isInsert){
+    _id: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Id,
+        autoValue() {
+            if (this.isInsert && !this.isFromTrustedCode) {
                 return this.userId;
             }
+            return undefined;
         },
-        index:1,
-        unique:true,
-        denyUpdate:true
     },
-    "username":{
-        type:String,
-        index:1,
-        unique:true,
-        optional:true,
-        denyUpdate:true
+    username: {
+        type: String,
+        index: 1,
+        unique: true,
+        optional: true,
+        denyUpdate: true,
     },
-    "createdAt":{
-        type:Date,
-        autoValue:function() {
-            if(this.isInsert){
-                return new Date();
+    createdAt: {
+        type: Date,
+        autoValue() {
+            if (this.isInsert) {
+                return ServerTime.date();
             }
+            return undefined;
         },
-        denyUpdate:true
+        denyUpdate: true,
     },
-    "lastUpdate":{
-        type:Date,
-        autoValue:function() {
-            return new Date();
-        }
+    updatedAt: {
+        type: Date,
+        autoValue() {
+            return ServerTime.date();
+        },
     }
 }
 ```
 
-As part of the above examples, in the `fullName` method we return a string containing the `firstName` and `lastName` properties of the document. For these to be allowed as part of the profile document, you will need to add them to the schema for `Profile`. This is made simple by the `appendSchema` inherited from `BaseModel`.
+> **Note**
+>
+> Profiles created automatically or from the client use the current users `_id` as the `_id` of the new profile record.
 
-The schema is handled by `SimpleSchema` so just pass a compatible schema definition to the `appendSchema` method.
+As part of the above examples, in the `fullName` method we return a string containing the `firstName` and `lastName` properties of the document. For these to be allowed as part of the profile document, you will need to add them to the schema for `Profile`. This can be accomplished by using the `attachSchema` method inherited from `BaseModel`.
+
+The schema is handled by `SimpleSchema` so just pass a compatible schema definition to the `attachSchema` method.
 
 ```javascript
-    Profile.appendSchema({
+    Profile.attachSchema({
         "firstName":{
             type:String,
             required: true
