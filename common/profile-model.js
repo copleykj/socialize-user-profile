@@ -17,6 +17,9 @@ export class Profile extends LinkParent {
     user() {
         return Meteor.users.findOne({ _id: this._id });
     }
+    checkOwnership() {
+        return this._id === Meteor.userId();
+    }
 }
 
 Profile.attachCollection(ProfilesCollection);
