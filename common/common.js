@@ -10,6 +10,6 @@ import extendUser from './user-extensions';
 import construct from './profile-model.js';
 
 const { Profile, ProfilesCollection } = construct({ Meteor, Mongo, LinkableModel, LinkParent, ServerTime });
-extendUser(User);
+extendUser({ User, ProfilesCollection });
 
 export { Profile, ProfilesCollection };

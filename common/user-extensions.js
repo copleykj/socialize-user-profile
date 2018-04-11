@@ -1,6 +1,4 @@
-import { ProfilesCollection } from './profile-model';
-
-export default (User) => {
+export default ({ User, ProfilesCollection }) => {
     User.methods({
         profile() {
             return ProfilesCollection.findOne({ _id: this._id });
