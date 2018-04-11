@@ -1,6 +1,6 @@
 {
     "name": "@socialize/user-profile",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Meteor's socialize:user-profile package ported for React Native",
     "main": "entry-rn.js",
     "scripts": {
