@@ -6,7 +6,7 @@ import { check } from 'meteor/check';
 import { User } from 'meteor/socialize:user-model';
 import { publishComposite } from 'meteor/reywood:publish-composite';
 
-import { ProfilesCollection } from '../common/profile-model.js';
+import { ProfilesCollection } from '../common/common.js';
 
 let childrenPublications = [
     {
