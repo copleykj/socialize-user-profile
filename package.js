@@ -2,7 +2,7 @@
 Package.describe({
     name: 'socialize:user-profile',
     summary: 'An extensible model for a users profile',
-    version: '1.0.1',
+    version: '1.0.2',
     git: 'https://github.com/copleykj/socialize-user-profile.git',
 });
 
