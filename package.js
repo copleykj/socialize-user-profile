@@ -13,5 +13,5 @@ Package.onUse(function _(api) {
     api.use('socialize:friendships@1.0.0', { weak: true });
 
     api.mainModule('server/server.js', 'server');
-    api.mainModule('common/common.js');
+    api.mainModule('common/common.js', 'client');
 });

@@ -4,7 +4,7 @@ import { User } from 'meteor/socialize:user-model';
 /* eslint-enable import/no-unresolved */
 
 import './publications.js';
-import { ProfilesCollection } from '../common/common.js';
+import { Profile, ProfilesCollection } from '../common/common.js';
 
 ProfilesCollection.allow({
     insert(userId, document) {
@@ -38,3 +38,5 @@ Meteor.users.deny({
         return true;
     },
 });
+
+export { Profile, ProfilesCollection };
