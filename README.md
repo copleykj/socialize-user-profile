@@ -3,25 +3,24 @@ This package provides the bare minimum required for a user profile and is intend
 
 >This is a [Meteor][meteor] package with part of it's code published as a companion NPM package made to work with React Native. This allows your Meteor and React Native projects that use this package to share code between them to give you a competitive advantage when bringing your mobile and web application to market.
 
-<!-- TOC START min:1 max:3 link:true update:true -->
 - [User Profile](#user-profile)
-  - [Supporting the Project](#supporting-the-project)
-  - [Meteor Installation](#meteor-installation)
-  - [React Native Installation](#react-native-installation)
-  - [Automatic Profile Creation](#automatic-profile-creation)
-  - [Basic Usage](#basic-usage)
-    - [Extending using methods()](#extending-using-methods)
-    - [Extending Profile class](#extending-profile-class)
-    - [Extending The Schema](#extending-the-schema)
-    - [User Extensions](#user-extensions)
-  - [Advanced Usage](#advanced-usage)
-
-<!-- TOC END -->
+    - [Supporting the Project](#supporting-the-project)
+    - [Meteor Installation](#meteor-installation)
+    - [React Native Installation](#react-native-installation)
+    - [Automatic Profile Creation](#automatic-profile-creation)
+    - [Basic Usage](#basic-usage)
+        - [Extending using methods()](#extending-using-methods)
+        - [Extending Profile class](#extending-profile-class)
+        - [Extending The Schema](#extending-the-schema)
+        - [User Extensions](#user-extensions)
+    - [Advanced Usage](#advanced-usage)
 
 ## Supporting the Project
 In the spirit of keeping this and all of the packages in the [Socialize][socialize] set alive, I ask that if you find this package useful, please donate to it's development.
 
-Litecoin: LXLBD9sC5dV79eQkwj7tFusUHvJA5nhuD3 / [Patreon](https://www.patreon.com/user?u=4866588) / [Paypal](https://www.paypal.me/copleykj)
+![Litecoin](http://gdurl.com/xnOe)
+
+[Patreon](https://www.patreon.com/user?u=4866588) / [Paypal](https://www.paypal.me/copleykj)
 
 ## Meteor Installation
 
@@ -33,7 +32,7 @@ $ meteor add socialize:user-profile
 ```
 
 > **Note**
->    
+>
 > This package completely disables updates to the users collection from the client to remove the ability of users to arbitrarily update the profile field on the user document.
 
 ## React Native Installation
@@ -66,12 +65,12 @@ Depending on the environment, Meteor or React Native, you'll need to import clas
 ```javascript
 // Meteor Imports
 import { Profile, ProfilesCollection } from 'meteor/socialize:user-profile';
-```  
+```
 
 ```javascript
 // React Native Imports
 import { Profile, ProfilesCollection } from '@socialize/user-profile';
-```  
+```
 
 ### Extending using methods()
 ```javascript
