@@ -37,7 +37,6 @@ export default ({ Meteor, Mongo, LinkableModel, LinkParent, ServerTime }) => {
             index: 1,
             unique: true,
             optional: true,
-            denyUpdate: true,
         },
         createdAt: {
             type: Date,
