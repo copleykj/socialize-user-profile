@@ -9,7 +9,7 @@ Package.describe({
 Package.onUse(function _(api) {
     api.versionsFrom('1.3');
 
-    api.use('socialize:user-blocking@1.0.1');
+    api.use('socialize:user-blocking@1.0.3');
     api.use('socialize:friendships@1.1.0', { weak: true });
 
     api.mainModule('server/server.js', 'server');
