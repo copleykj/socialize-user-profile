@@ -1,34 +1,33 @@
 # User Profile
+
 This package provides the bare minimum required for a user profile and is intended to be built upon to create a custom profile class that meets your needs.
 
 >This is a [Meteor][meteor] package with part of it's code published as a companion NPM package made to work with React Native. This allows your Meteor and React Native projects that use this package to share code between them to give you a competitive advantage when bringing your mobile and web application to market.
 
-- [User Profile](#user-profile)
-    - [Supporting the Project](#supporting-the-project)
-    - [Meteor Installation](#meteor-installation)
-    - [React Native Installation](#react-native-installation)
-    - [Automatic Profile Creation](#automatic-profile-creation)
-    - [Basic Usage](#basic-usage)
-        - [Extending using methods()](#extending-using-methods)
-        - [Extending Profile class](#extending-profile-class)
-        - [Extending The Schema](#extending-the-schema)
-        - [User Extensions](#user-extensions)
-    - [Advanced Usage](#advanced-usage)
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+- [Supporting The Project](#supporting-the-project)
+- [Meteor Installation](#meteor-installation)
+- [React Native Installation](#react-native-installation)
+- [Automatic Profile Creation](#automatic-profile-creation)
+- [Basic Usage](#basic-usage)
+  - [Extending using methods()](#extending-using-methods)
+  - [Extending Profile class](#extending-profile-class)
+  - [Extending The Schema](#extending-the-schema)
+  - [User Extensions](#user-extensions)
+- [Advanced Usage](#advanced-usage)
+<!-- /TOC -->
 
-## Supporting the Project
-In the spirit of keeping this and all of the packages in the [Socialize][socialize] set alive, I ask that if you find this package useful, please donate to it's development.
+## Supporting The Project
 
-![Litecoin](http://gdurl.com/xnOe)
-
-[Patreon](https://www.patreon.com/user?u=4866588) / [Paypal](https://www.paypal.me/copleykj)
+Finding the time to maintain FOSS projects can be quite difficult. I am myself responsible for over 30 personal projects across 2 platforms, as well as Multiple others maintained by the [Meteor Community Packages](https://github.com/meteor-community-packages) organization. Therfore, if you appreciate my work, I ask that you either sponsor my work through GitHub, or donate via Paypal or Patreon. Every dollar helps give cause for spending my free time fielding issues, feature requests, pull requests and releasing updates. Info can be found in the "Sponsor this project" section of the [GitHub Repo](https://github.com/copleykj/socialize-user-profile)
 
 ## Meteor Installation
 
 This package relies on the npm package `simpl-schema` so you will need to make sure it is installed as well.
 
 ```shell
-$ meteor npm install --save simpl-schema
-$ meteor add socialize:user-profile
+meteor npm install --save simpl-schema
+meteor add socialize:user-profile
 ```
 
 > **Note**
@@ -40,11 +39,12 @@ $ meteor add socialize:user-profile
 When using this package with React Native, the dependency tree ensures that `simpl-schema` is loaded so there's no need to install it as when using within Meteor.
 
 ```shell
-$ npm install --save @socialize/user-profile
+npm install --save @socialize/user-profile
 ```
+
 > **Note**
 >
->  When using with React Native, you'll need to connect to a server which hosts the server side Meteor code for your app using `Meteor.connect` as per the [@socialize/react-native-meteor](https://www.npmjs.com/package/@socialize/react-native-meteor#example-usage) documentation.
+> When using with React Native, you'll need to connect to a server which hosts the server side Meteor code for your app using `Meteor.connect` as per the [@socialize/react-native-meteor](https://www.npmjs.com/package/@socialize/react-native-meteor#example-usage) documentation.
 
 ## Automatic Profile Creation
 
@@ -73,6 +73,7 @@ import { Profile, ProfilesCollection } from '@socialize/user-profile';
 ```
 
 ### Extending using methods()
+
 ```javascript
 Profile.methods({
     fullName() {
@@ -86,6 +87,7 @@ userProfile.fullName(); //=> "John Doe"
 ```
 
 ### Extending Profile class
+
 ```javascript
 export class EnhancedProfile extends Profile{
     fullName() {
@@ -99,6 +101,7 @@ userProfile.fullName(); //=> "John Doe"
 ```
 
 ### Extending The Schema
+
 Currently the schema for `Profile` has the following definition.
 
 ```javascript
@@ -210,7 +213,6 @@ LinkableModel.registerParentModel(PostableProfile);
 ```
 
 For more information on using this package, please refer to [API.md][api]
-
 
 [meteor]: https://meteor.com
 [socialize]: https://atmospherejs.com/socialize
